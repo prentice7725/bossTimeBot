@@ -430,7 +430,6 @@ def init():
 		if len(tmp_boss_name_list) > 1:
 			for nick in tmp_boss_name_list[1:]:
 				tmp_nick.append(nick)
-				tmp_nick.append(convertToInitialLetters(nick))			
 			boss_nick[tmp_boss_name_list[0]] = tmp_nick
 		f.append(tmp_bossData[j][1][10:tmp_len])  #bossData[1] : 시
 		f.append(tmp_bossData[j][2][13:])         #bossData[2] : 멍/미입력
@@ -1450,7 +1449,7 @@ class mainCog(commands.Cog):
 					)
 			embed.add_field(
 					name="----- 추가기능 -----",
-					value= '```- [보스명]컷/멍/예상  [할말] : 보스시간 입력 후 빈칸 두번!! 메모 가능\n- [보스명]컷 명령어는 초성으로 입력가능합니다.\n  ex)' + bossData[0][0] + '컷 => ' + convertToInitialLetters(bossData[0][0] +'컷') + ', ' + bossData[0][0] + ' 컷 => ' + convertToInitialLetters(bossData[0][0] +' 컷') + '```'
+					value= '```- [보스명]컷/멍/예상  [할말] : 보스시간 입력 후 빈칸 두번!! 메모 가능\n- [보스명]컷 명령어는 초성으로 입력가능합니다.\n  ex)' + bossData[0][0] + '컷 => ' +  ', ' + bossData[0][0] + ' 컷 => ' + '```'
 					)
 			await ctx.send( embed=embed, tts=False)
 		else:
@@ -4035,7 +4034,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 				channel = basicSetting[7]
 				message = msg
 
-				for command_str in ["컷", "멍", "예상", "삭제", "메모", "카톡켬", "카톡끔"]:
+				for command_str in ["END", "えんど", "エンド", "わきなし", "無し", "予想","削除", "メモ"]:
 					if command_str in message.content:
 						tmp_msg : str = ""
 						for key, value in boss_nick.items():
@@ -4046,7 +4045,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 
 				for i in range(bossNum):
 					################ 보스 컷처리 ################ 
-					if message.content.startswith(bossData[i][0] +'컷') or message.content.startswith(convertToInitialLetters(bossData[i][0] +'컷')) or message.content.startswith(bossData[i][0] +' 컷') or message.content.startswith(convertToInitialLetters(bossData[i][0] +' 컷')):
+					if message.content.upper().startswith(bossData[i][0] +'END') or message.content.upper().startswith(bossData[i][0] +' END') or message.content.startswith(bossData[i][0] +'えんど')　or message.content.startswith(bossData[i][0] +' えんど') or message.content.startswith(bossData[i][0] +'エンド')　or message.content.startswith(bossData[i][0] +' エンド'):
 						if hello.find('  ') != -1 :
 							bossData[i][6] = hello[hello.find('  ')+2:]
 							hello = hello[:hello.find('  ')]
@@ -4054,7 +4053,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							bossData[i][6] = ''
 
 						curr_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
-						tmp_msg = bossData[i][0] +'컷'
+						tmp_msg = bossData[i][0] +'END'
 						if len(hello) > len(tmp_msg) + 3 :
 							if hello.find(':') != -1 :
 								chkpos = hello.find(':')
@@ -4103,21 +4102,21 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							bossFlag0[i] = True
 
 						embed = discord.Embed(
-								description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+								description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。.```',
 								color=0xff0000
 								)
 						await self.get_channel(channel).send(embed=embed, tts=False)
 
-					################ 보스 멍 처리 ################ 
+					################ ボス　わきなし ################ 
 
-					if message.content.startswith(bossData[i][0] +'멍') or message.content.startswith(bossData[i][0] +' 멍'):
+					if message.content.startswith(bossData[i][0] +'わきなし') or message.content.startswith(bossData[i][0] +' わきなし'):
 						if hello.find('  ') != -1 :
 							bossData[i][6] = hello[hello.find('  ')+2:]
 							hello = hello[:hello.find('  ')]
 						else:
 							bossData[i][6] = ''
 							
-						tmp_msg = bossData[i][0] +'멍'
+						tmp_msg = bossData[i][0] +'わきなし'
 						tmp_now = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
 
 						if len(hello) > len(tmp_msg) + 3 :
@@ -4181,24 +4180,24 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 									bossFlag0[i] = True
 
 								embed = discord.Embed(
-										description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+										description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。```',
 										color=0xff0000
 										)
 								await self.get_channel(channel).send(embed=embed, tts=False)
 							else:
-								await self.get_channel(channel).send('```' + bossData[i][0] + '탐이 아직 안됐습니다. 다음 ' + bossData[i][0] + '탐 [' + tmp_bossTimeString[i] + '] 입니다```', tts=False)
+								await self.get_channel(channel).send('```' + bossData[i][0] + 'まだ時間ではありません。. 次の ' + bossData[i][0] + '時間は [' + tmp_bossTimeString[i] + '] です。```', tts=False)
 
 						
 				################ 예상 보스 타임 입력 ################ 
 
-					if message.content.startswith(bossData[i][0] +'예상')  or message.content.startswith(bossData[i][0] +' 예상'):
+					if message.content.startswith(bossData[i][0] +'予想')  or message.content.startswith(bossData[i][0] +' 予想'):
 						if hello.find('  ') != -1 :
 							bossData[i][6] = hello[hello.find('  ')+2:]
 							hello = hello[:hello.find('  ')]
 						else:
 							bossData[i][6] = ''
 							
-						tmp_msg = bossData[i][0] +'예상'
+						tmp_msg = bossData[i][0] +'予想'
 						if len(hello) > len(tmp_msg) + 4 :
 							if hello.find(':') != -1 :
 								chkpos = hello.find(':')
@@ -4233,12 +4232,12 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 								bossFlag0[i] = True		
 									
 							embed = discord.Embed(
-									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
+									description= '```次の ' + bossData[i][0] + ' 予想時間は ' + bossTimeString[i] + 'です。```',
 									color=0xff0000
 									)
 							await self.get_channel(channel).send(embed=embed, tts=False)
 						else:
-							await self.get_channel(channel).send('```' + bossData[i][0] +' 예상 시간을 입력해주세요.```', tts=False)
+							await self.get_channel(channel).send('```' + bossData[i][0] +' 予想時間を入力してください。```', tts=False)
 							
 					################ 보스타임 삭제 ################
 						
@@ -4253,23 +4252,23 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 						bossFlag0[i] = False
 						bossMungFlag[i] = False
 						bossMungCnt[i] = 0
-						await self.get_channel(channel).send('<' + bossData[i][0] + ' 삭제완료>', tts=False)
+						await self.get_channel(channel).send('<' + bossData[i][0] + ' 削除しました>', tts=False)
 						await dbSave()
-						print ('<' + bossData[i][0] + ' 삭제완료>')
+						print ('<' + bossData[i][0] + ' 削除しました>')
 					
-					################ 보스별 메모 ################ 
+					################ ボスこと メモ ################ 
 
-					if message.content.startswith(bossData[i][0] +'메모 '):
+					if message.content.startswith(bossData[i][0] +'メモ削除 '):
 						
-						tmp_msg = bossData[i][0] +'메모 '
+						tmp_msg = bossData[i][0] +'メモ削除 '
 						
 						bossData[i][6] = hello[len(tmp_msg):]
-						await self.get_channel(channel).send('< ' + bossData[i][0] + ' [ ' + bossData[i][6] + ' ] 메모등록 완료>', tts=False)
+						await self.get_channel(channel).send('< ' + bossData[i][0] + ' [ ' + bossData[i][6] + ' ] メモ登録しました>', tts=False)
 						
-					if message.content.startswith(bossData[i][0] +'메모삭제'):
+					if message.content.startswith(bossData[i][0] +'メモ削除'):
 						
 						bossData[i][6] = ''
-						await self.get_channel(channel).send('< ' + bossData[i][0] + ' 메모삭제 완료>', tts=False)
+						await self.get_channel(channel).send('< ' + bossData[i][0] + ' メモ削除しました>', tts=False)
 
 		await self.process_commands(ori_msg)
 
@@ -4279,14 +4278,14 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 		elif isinstance(error, MissingRequiredArgument):
 			return
 		elif isinstance(error, discord.ext.commands.MissingPermissions):
-			return await ctx.send(f"**[{ctx.message.content.split()[0]}]** 명령을 사용할 권한이 없습니다.!")
+			return await ctx.send(f"**[{ctx.message.content.split()[0]}]** 権限がありません")
 		elif isinstance(error, discord.ext.commands.CheckFailure):
-			return await ctx.send(f"**[{ctx.message.content.split()[0]}]** 명령을 사용할 권한이 없습니다.!")
+			return await ctx.send(f"**[{ctx.message.content.split()[0]}]** 権限がありません")
 		raise error
 
 	async def close(self):
 		await super().close()
-		print("일상디코봇 종료 완료.")
+		print("BossTimeBot Finish.")
 
 ilsang_distribution_bot : IlsangDistributionBot = IlsangDistributionBot()
 ilsang_distribution_bot.add_cog(mainCog(ilsang_distribution_bot))
