@@ -1293,19 +1293,19 @@ class mainCog(commands.Cog):
 			contents = repo.get_contents("test_setting.ini")
 			repo.update_file(contents.path, "test_setting", result_textCH, contents.sha)
 
-			await ctx.send(f"< 텍스트채널 [{ctx.message.channel.name}] 접속완료 >\n< 음성채널 접속 후 [{command[5][0]}] 명령을 사용 하세요 >", tts=False)
+			await ctx.send(f"< チャンネル [{ctx.message.channel.name}] 接続完了 >\n< 음성채널 접속 후 [{command[5][0]}] 명령을 사용 하세요 >", tts=False)
 			
-			print('< 텍스트채널 [' + ctx.guild.get_channel(basicSetting[7]).name + '] 접속완료>')
+			print('< 텍스트채널 [' + ctx.guild.get_channel(basicSetting[7]).name + '] 接続完了>')
 			if basicSetting[6] != "" and basicSetting[21] == "1":
 				try:
 					await ctx.guild.get_channel(basicSetting[6]).connect(reconnect=True, timeout=5)
-					print('< 음성채널 [' + ctx.guild.get_channel(basicSetting[6]).name + '] 접속완료>')
+					print('< 음성채널 [' + ctx.guild.get_channel(basicSetting[6]).name + '] 接続完了>')
 				except:
 					print('< 음성채널 [' + ctx.guild.get_channel(basicSetting[6]).name + '] 접속에러! >')
 					pass
 			if basicSetting[8] != "":
 				if str(basicSetting[8]) in channel_id:
-					print('< 사다리채널 [' + ctx.guild.get_channel(int(basicSetting[8])).name + '] 접속완료 >')
+					print('< 사다리채널 [' + ctx.guild.get_channel(int(basicSetting[8])).name + '] 接続完了 >')
 				else:
 					basicSetting[8] = ""
 					print(f"사다리채널 ID 오류! [{command[28][0]} 사다리] 명령으로 재설정 바랍니다.")
@@ -1317,19 +1317,19 @@ class mainCog(commands.Cog):
 					print(f"정산채널 ID 오류! [{command[28][0]} 정산] 명령으로 재설정 바랍니다.")
 			if basicSetting[18] != "":
 				if str(basicSetting[18]) in channel_id:
-					print('< 척살채널 [' + ctx.guild.get_channel(int(basicSetting[18])).name + '] 접속완료>')
+					print('< 척살채널 [' + ctx.guild.get_channel(int(basicSetting[18])).name + '] 接続完了>')
 				else:
 					basicSetting[18] = ""
 					print(f"척살채널 ID 오류! [{command[28][0]} 척살] 명령으로 재설정 바랍니다.")
 			if basicSetting[19] != "":
 				if str(basicSetting[19]) in channel_id:
-					print('< 경주채널 [' + ctx.guild.get_channel(int(basicSetting[19])).name + '] 접속완료>')
+					print('< 경주채널 [' + ctx.guild.get_channel(int(basicSetting[19])).name + '] 接続完了>')
 				else:
 					basicSetting[19] = ""
 					print(f"경주채널 ID 오류! [{command[28][0]} 경주] 명령으로 재설정 바랍니다.")
 			if basicSetting[20] != "":
 				if str(basicSetting[20]) in channel_id:
-					print('< 아이템채널 [' + ctx.guild.get_channel(int(basicSetting[20])).name + '] 접속완료>')
+					print('< 아이템채널 [' + ctx.guild.get_channel(int(basicSetting[20])).name + '] 接続完了>')
 				else:
 					basicSetting[20] = ""
 					print(f"아이템채널 ID 오류! [{command[28][0]} 아이템] 명령으로 재설정 바랍니다.")
@@ -1433,15 +1433,14 @@ class mainCog(commands.Cog):
 			command_list += ','.join(command[21]) + ' [할말]\n'     #!상태
 			command_list += ','.join(command[28]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널설정
 			command_list += ','.join(command[42]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널삭제
-			command_list += ','.join(command[34]) + ' ※ 관리자만 실행 가능\n\n'     #서버나가기
+			command_list += ','.join(command[34]) + ' ※ 管理者のみ\n\n'     #서버나가기
 			command_list += ','.join(command[22]) + '\n'     #보스탐
 			command_list += ','.join(command[23]) + '\n'     #!보스탐
-			command_list += '[보스명]컷 또는 [보스명]컷 0000, 00:00\n'  
-			command_list += '[보스명] 컷 또는 [보스명] 컷 0000, 00:00\n'   
-			command_list += '[보스명]멍 또는 [보스명]멍 0000, 00:00\n'     
-			command_list += '[보스명]예상 또는 [보스명]예상 0000, 00:00\n' 
-			command_list += '[보스명]삭제\n'     
-			command_list += '[보스명]메모 [할말]\n'
+			command_list += '[ボス名]END まだは [ボス名]エンド 0000, 00:00\n'  
+			command_list += '[ボス名] END まだは [ボス名] エンド 0000, 00:00\n'   
+			command_list += '[ボス名]わきなし まだは [ボス名] わきなし 0000, 00:00\n'     
+			command_list += '[ボス名]予想 まだは [ボス名] 予想 0000, 00:00\n' 
+			command_list += '[ボス名]メモ [内容]\n'
 			embed = discord.Embed(
 					title = "----- 명령어 -----",
 					description= '```' + command_list + '```',
