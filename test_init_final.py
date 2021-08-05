@@ -2615,7 +2615,7 @@ class mainCog(commands.Cog):
 				tmp_boss_information[0] = '``` ```'
 
 			embed = discord.Embed(
-				title = "----- 미예약 보스 -----",
+				title = "----- 未入力ボス -----",
 				description= tmp_boss_information[0],
 				color=0x0000ff
 				)
