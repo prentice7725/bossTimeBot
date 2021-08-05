@@ -1357,7 +1357,7 @@ class mainCog(commands.Cog):
 			#command_list += ','.join(command[43]) + f' [00:00:00 : 보스명(엔터) ...]\n※ 보스탐 결과 복붙 가능\nex){command[43][0]} + 12:34:00 : {bossData[0][0]}\n+ 10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!컷등록
 			#command_list += ','.join(command[44]) + f' [00:00:00 : 보스명(엔터) ...]\n※ [00:00:00 보스명] 형태로 여러줄(엔터)로 구분하여 등록\nex){command[44][0]} + 12:34:00 : {bossData[0][0]}\n10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!예상등록
 			#command_list += ','.join(command[45]) + ' [시간(00:00)] [추가시간(숫자)] [보스명1] [보스명2] [보스명3] ...\n'     #!추가등록
-			#command_list += ','.join(command[15]) + '\n'     #!q
+			command_list += ','.join(command[15]) + '次のわきまで残り時間\n'     #!q
 			#command_list += ','.join(command[16]) + ' [할말]\n'     #!v
 			#command_list += ','.join(command[17]) + '\n'     #!리젠
 			#command_list += ','.join(command[18]) + '\n'     #!현재시간
@@ -2110,9 +2110,9 @@ class mainCog(commands.Cog):
 				if bossMungFlag[i] != True and bossTimeString[i] != '99:99:99' :
 					datelist2.append(bossTime[i])
 
-			for i in range(fixed_bossNum):
-				if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
-					datelist2.append(fixed_bossTime[i])
+			#for i in range(fixed_bossNum):
+			#	if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
+			#		datelist2.append(fixed_bossTime[i])
 
 			datelist = list(set(datelist2))
 
@@ -2124,12 +2124,12 @@ class mainCog(commands.Cog):
 					ouput_bossData.append(aa)
 				aa = []
 
-			for i in range(fixed_bossNum):
-				aa.append(fixed_bossData[i][0])                      #output_bossData[0] : 보스명
-				aa.append(fixed_bossTime[i])                         #output_bossData[1] : 시간
-				aa.append(fixed_bossTime[i].strftime('%H:%M:%S'))    #output_bossData[2] : 시간(00:00:00)
-				ouput_bossData.append(aa)
-				aa = []
+			#for i in range(fixed_bossNum):
+			#	aa.append(fixed_bossData[i][0])                      #output_bossData[0] : 보스명
+			#	aa.append(fixed_bossTime[i])                         #output_bossData[1] : 시간
+			#	aa.append(fixed_bossTime[i].strftime('%H:%M:%S'))    #output_bossData[2] : 시간(00:00:00)
+			#	ouput_bossData.append(aa)
+			#	aa = []
 
 			tmp_sorted_datelist = sorted(datelist)
 
@@ -2138,7 +2138,7 @@ class mainCog(commands.Cog):
 					sorted_datelist.append(tmp_sorted_datelist[i])
 			
 			if len(sorted_datelist) == 0:
-				await ctx.send( '<보스타임 정보가 없습니다.>', tts=False)
+				await ctx.send( '<ボスタイム情報がありません>', tts=False)
 			else : 
 				result_lefttime = ''
 				
@@ -2152,7 +2152,7 @@ class mainCog(commands.Cog):
 								hours, remainder = divmod(total_seconds,60*60)
 								minutes, seconds = divmod(remainder,60)
 
-								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
+								result_lefttime += ouput_bossData[i][0] + '次の時間まで %02d:%02d:%02d のこってます ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
 				else :
 					for j in range(len(sorted_datelist)):
 						for i in range(len(ouput_bossData)):						
@@ -2163,7 +2163,7 @@ class mainCog(commands.Cog):
 								hours, remainder = divmod(total_seconds,60*60)
 								minutes, seconds = divmod(remainder,60)
 
-								result_lefttime += '다음 ' + ouput_bossData[i][0] + '탐까지 %02d:%02d:%02d 남았습니다. ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
+								result_lefttime +=  ouput_bossData[i][0] + '次の時間まで %02d:%02d:%02d のこってます ' % (hours,minutes,seconds) + '[' +  ouput_bossData[i][2] + ']\n'
 				embed = discord.Embed(
 					description= result_lefttime,
 					color=0xff0000
