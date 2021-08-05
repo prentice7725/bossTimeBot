@@ -2283,9 +2283,9 @@ class mainCog(commands.Cog):
 				else :
 					datelist2.append(bossTime[i])
 
-			for i in range(fixed_bossNum):
-				if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
-					datelist2.append(fixed_bossTime[i])
+			#for i in range(fixed_bossNum):
+			#	if fixed_bossTime[i] < datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0])+3):
+			#		datelist2.append(fixed_bossTime[i])
 
 			datelist = list(set(datelist2))
 
@@ -2513,26 +2513,26 @@ class mainCog(commands.Cog):
 					ouput_bossData.append(aa)
 					aa = []
 
-			for i in range(fixed_bossNum):
-				fixed_datelist.append(fixed_bossTime[i])
+			#for i in range(fixed_bossNum):
+			#	fixed_datelist.append(fixed_bossTime[i])
 
-			fixed_datelist = list(set(fixed_datelist))
+			#fixed_datelist = list(set(fixed_datelist))
 
-			fixedboss_information = []
-			cntF = 0
-			fixedboss_information.append('')
+			#fixedboss_information = []
+			#cntF = 0
+			#fixedboss_information.append('')
 					
-			for timestring1 in sorted(fixed_datelist):
-				if len(fixedboss_information[cntF]) > 1800 :
-					fixedboss_information.append('')
-					cntF += 1
-				for i in range(fixed_bossNum):
-					if timestring1 == fixed_bossTime[i]:
-						if (datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0]))).strftime('%Y-%m-%d') == fixed_bossTime[i].strftime('%Y-%m-%d'):
-							tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M:%S') #초빼기 : tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M')
-						else:
-							tmp_timeSTR = '[' + fixed_bossTime[i].strftime('%Y-%m-%d') + '] ' + fixed_bossTime[i].strftime('%H:%M:%S') #초빼기 : tmp_timeSTR = '[' + fixed_bossTime[i].strftime('%Y-%m-%d') + '] ' + fixed_bossTime[i].strftime('%H:%M')
-						fixedboss_information[cntF] = fixedboss_information[cntF] + tmp_timeSTR + ' : ' + fixed_bossData[i][0] + '\n'
+			#for timestring1 in sorted(fixed_datelist):
+			#	if len(fixedboss_information[cntF]) > 1800 :
+			#		fixedboss_information.append('')
+			#		cntF += 1
+			#	for i in range(fixed_bossNum):
+			#		if timestring1 == fixed_bossTime[i]:
+			#			if (datetime.datetime.now() + datetime.timedelta(hours=int(basicSetting[0]))).strftime('%Y-%m-%d') == fixed_bossTime[i].strftime('%Y-%m-%d'):
+			#				tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M:%S') #초빼기 : tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M')
+			#			else:
+			#				tmp_timeSTR = '[' + fixed_bossTime[i].strftime('%Y-%m-%d') + '] ' + fixed_bossTime[i].strftime('%H:%M:%S') #초빼기 : tmp_timeSTR = '[' + fixed_bossTime[i].strftime('%Y-%m-%d') + '] ' + fixed_bossTime[i].strftime('%H:%M')
+			#			fixedboss_information[cntF] = fixedboss_information[cntF] + tmp_timeSTR + ' : ' + fixed_bossData[i][0] + '\n'
 
 			boss_information = []
 			cnt = 0
@@ -2556,29 +2556,29 @@ class mainCog(commands.Cog):
 								boss_information[cnt] = boss_information[cnt] + ouput_bossData[i][3] + ' ' + ouput_bossData[i][2] + ' : ' + ouput_bossData[i][0] + ' (멍 ' + str(ouput_bossData[i][5]) + '회)' + ' ' + ouput_bossData[i][6] + '\n'
 
 			###########################고정보스출력
-			if len(fixedboss_information[0]) != 0:
-				fixedboss_information[0] = "```diff\n" + fixedboss_information[0] + "\n```"
-			else :
-				fixedboss_information[0] = '``` ```'
+			#if len(fixedboss_information[0]) != 0:
+			#	fixedboss_information[0] = "```diff\n" + fixedboss_information[0] + "\n```"
+			#else :
+			#	fixedboss_information[0] = '``` ```'
 	
-			embed = discord.Embed(
-					title = "----- 고 정 보 스 -----",
-					description= fixedboss_information[0],
-					color=0x0000ff
+			#embed = discord.Embed(
+			#		title = "----- 고 정 보 스 -----",
+			#		description= fixedboss_information[0],
+			#		color=0x0000ff
 					)
-			await ctx.send( embed=embed, tts=False)
-			for i in range(len(fixedboss_information)-1):
-				if len(fixedboss_information[i+1]) != 0:
-					fixedboss_information[i+1] = "```diff\n" + fixedboss_information[i+1] + "\n```"
-				else :
-					fixedboss_information[i+1] = '``` ```'
+			#await ctx.send( embed=embed, tts=False)
+			#for i in range(len(fixedboss_information)-1):
+			#	if len(fixedboss_information[i+1]) != 0:
+			#		fixedboss_information[i+1] = "```diff\n" + fixedboss_information[i+1] + "\n```"
+			#	else :
+			#		fixedboss_information[i+1] = '``` ```'
 
-				embed = discord.Embed(
-						title = '',
-						description= fixedboss_information[i+1],
-						color=0x0000ff
-						)
-				await ctx.send( embed=embed, tts=False)
+			#	embed = discord.Embed(
+			#			title = '',
+			#			description= fixedboss_information[i+1],
+			#			color=0x0000ff
+			#			)
+			#	await ctx.send( embed=embed, tts=False)
 
 			###########################일반보스출력
 			if len(boss_information[0]) != 0:
@@ -2587,7 +2587,7 @@ class mainCog(commands.Cog):
 				boss_information[0] = '``` ```'
 
 			embed = discord.Embed(
-					title = "----- 보스탐 정보 -----",
+					title = "----- ボスタイム -----",
 					description= boss_information[0],
 					color=0x0000ff
 					)
