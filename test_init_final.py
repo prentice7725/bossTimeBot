@@ -4045,7 +4045,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 							bossFlag0[i] = True
 
 						embed = discord.Embed(
-								description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。.```',
+								description= '```'+ bossData[i][0] + ' 次の時間は ' + bossTimeString[i] + 'になります。.```',
 								color=0xff0000
 								)
 						await self.get_channel(channel).send(embed=embed, tts=False)
@@ -4099,7 +4099,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 								bossFlag0[i] = True
 
 							embed = discord.Embed(
-									description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。```',
+									description= '```'+ bossData[i][0] + ' 次の時間は ' + bossTimeString[i] + 'になります。.```',
 									color=0xff0000
 									)
 							await self.get_channel(channel).send(embed=embed, tts=False)
@@ -4123,7 +4123,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 									bossFlag0[i] = True
 
 								embed = discord.Embed(
-										description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。```',
+									description= '```'+ bossData[i][0] + ' 次の時間は ' + bossTimeString[i] + 'になります。.```',
 										color=0xff0000
 										)
 								await self.get_channel(channel).send(embed=embed, tts=False)
@@ -4175,7 +4175,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 								bossFlag0[i] = True		
 									
 							embed = discord.Embed(
-									description= '```次の ' + bossData[i][0] + ' 予想時間は ' + bossTimeString[i] + 'です。```',
+									description= '```'+ bossData[i][0] + ' 予想時間は ' + bossTimeString[i] + 'になります。.```',
 									color=0xff0000
 									)
 							await self.get_channel(channel).send(embed=embed, tts=False)
