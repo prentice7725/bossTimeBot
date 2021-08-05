@@ -346,21 +346,21 @@ def init():
 	
 	bossNum = int(len(boss_inputData)/6)
 
-	fixed_bossNum = int(len(fixed_inputData)/6) 
+	#fixed_bossNum = int(len(fixed_inputData)/6) 
 	
 	for i in range(bossNum):
 		tmp_bossData.append(boss_inputData[i*6:i*6+6])
 
-	for i in range(fixed_bossNum):
-		tmp_fixed_bossData.append(fixed_inputData[i*6:i*6+6]) 
+	#for i in range(fixed_bossNum):
+	#	tmp_fixed_bossData.append(fixed_inputData[i*6:i*6+6]) 
 		
 	for j in range(bossNum):
 		for i in range(len(tmp_bossData[j])):
 			tmp_bossData[j][i] = tmp_bossData[j][i].strip()
 
-	for j in range(fixed_bossNum):
-		for i in range(len(tmp_fixed_bossData[j])):
-			tmp_fixed_bossData[j][i] = tmp_fixed_bossData[j][i].strip()
+	#for j in range(fixed_bossNum):
+	#	for i in range(len(tmp_fixed_bossData[j])):
+	#		tmp_fixed_bossData[j][i] = tmp_fixed_bossData[j][i].strip()
 
 	tmp_boss_name_list : list = []
 	tmp_nick : list = []
