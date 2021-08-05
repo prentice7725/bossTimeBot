@@ -1237,7 +1237,7 @@ class mainCog(commands.Cog):
 			contents = repo.get_contents("test_setting.ini")
 			repo.update_file(contents.path, "test_setting", result_textCH, contents.sha)
 
-			await ctx.send(f"< チャンネル [{ctx.message.channel.name}] 接続完了 >\n< 음성채널 접속 후 [{command[5][0]}] 명령을 사용 하세요 >", tts=False)
+			await ctx.send(f"< チャンネル [{ctx.message.channel.name}] 接続完了 >", tts=False)
 			
 			print('< 텍스트채널 [' + ctx.guild.get_channel(basicSetting[7]).name + '] 接続完了>')
 			if basicSetting[6] != "" and basicSetting[21] == "1":
@@ -1336,48 +1336,48 @@ class mainCog(commands.Cog):
 	async def menu_(self, ctx):
 		if ctx.message.channel.id == basicSetting[7]:
 			command_list = ''
-			command_list += ','.join(command[2]) + '\n'     #!설정확인
-			command_list += ','.join(command[3]) + '\n'     #!채널확인
-			command_list += ','.join(command[4]) + ' [채널명]\n'     #!채널이동
-			command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!소환
-			command_list += ','.join(command[6]) + '\n'     #!불러오기
-			command_list += ','.join(command[7]) + '\n'     #!초기화
-			command_list += ','.join(command[8]) + '\n'     #!명치
-			command_list += ','.join(command[9]) + '\n'     #!재시작
-			command_list += ','.join(command[10]) + '\n'     #!미예약
-			command_list += ','.join(command[11]) + ' [인원] [금액]\n'     #!분배
-			command_list += ','.join(command[12]) + ' [뽑을인원수] [아이디1] [아이디2]...\n'     #!사다리
-			command_list += ','.join(command[27]) + ' [아이디1] [아이디2]...(최대 12명)\n'     #!경주
-			command_list += ','.join(command[41]) + ' [추첨인원] (대기시간/초) *(메모)\n'    #!럭키박스
-			command_list += ','.join(command[35]) + ' [판매금액] (거래소세금)\n'     #!수수료
-			command_list += ','.join(command[36]) + ' [거래소금액] [실거래금액] (거래소세금)\n'     #!페이백
-			command_list += ','.join(command[13]) + ' [아이디]\n'     #!정산
-			command_list += ','.join(command[14]) + ' 또는 ' + ','.join(command[14]) + ' 0000, 00:00\n'     #!보스일괄
-			command_list += ','.join(command[40]) + ' 또는 ' + ','.join(command[40]) + ' 0000, 00:00\n'     #!멍일괄
-			command_list += ','.join(command[43]) + f' [00:00:00 : 보스명(엔터) ...]\n※ 보스탐 결과 복붙 가능\nex){command[43][0]} + 12:34:00 : {bossData[0][0]}\n+ 10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!컷등록
-			command_list += ','.join(command[44]) + f' [00:00:00 : 보스명(엔터) ...]\n※ [00:00:00 보스명] 형태로 여러줄(엔터)로 구분하여 등록\nex){command[44][0]} + 12:34:00 : {bossData[0][0]}\n10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!예상등록
-			command_list += ','.join(command[45]) + ' [시간(00:00)] [추가시간(숫자)] [보스명1] [보스명2] [보스명3] ...\n'     #!추가등록
-			command_list += ','.join(command[15]) + '\n'     #!q
-			command_list += ','.join(command[16]) + ' [할말]\n'     #!v
-			command_list += ','.join(command[17]) + '\n'     #!리젠
-			command_list += ','.join(command[18]) + '\n'     #!현재시간
-			command_list += ','.join(command[24]) + '\n'     #!킬초기화
-			command_list += ','.join(command[25]) + '\n'     #!킬횟수 확인
-			command_list += ','.join(command[25]) + ' [아이디]\n'     #!킬
-			command_list += ','.join(command[26]) + ' [아이디]\n'     #!킬삭제
-			command_list += ','.join(command[33]) + ' [아이디] 또는 ' + ','.join(command[33]) + ' [아이디] [횟수]\n'     #!킬차감
-			command_list += ','.join(command[29]) + '\n'     #!아이템 목록 초기화
-			command_list += ','.join(command[30]) + '\n'     #!아이템 목록 확인
-			command_list += ','.join(command[30]) + ' [아이템] 또는 ' + ','.join(command[30]) + ' [아이템] [개수]\n'     #!아이템 목록 입력
-			command_list += ','.join(command[31]) + ' [아이템]\n'     #!아이템 목록에서 삭제
-			command_list += ','.join(command[32]) + ' [아이템] 또는 ' + ','.join(command[32]) + ' [아이템] [개수]\n'     #!아이템 차감
-			command_list += ','.join(command[19]) + '\n'     #!공지
-			command_list += ','.join(command[19]) + ' [공지내용]\n'     #!공지
-			command_list += ','.join(command[20]) + '\n'     #!공지삭제
-			command_list += ','.join(command[21]) + ' [할말]\n'     #!상태
-			command_list += ','.join(command[28]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널설정
-			command_list += ','.join(command[42]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널삭제
-			command_list += ','.join(command[34]) + ' ※ 管理者のみ\n\n'     #서버나가기
+			#command_list += ','.join(command[2]) + '\n'     #!설정확인
+			#command_list += ','.join(command[3]) + '\n'     #!채널확인
+			#command_list += ','.join(command[4]) + ' [채널명]\n'     #!채널이동
+			#command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!소환
+			#command_list += ','.join(command[6]) + '\n'     #!불러오기
+			#command_list += ','.join(command[7]) + '\n'     #!초기화
+			#command_list += ','.join(command[8]) + '\n'     #!명치
+			#command_list += ','.join(command[9]) + '\n'     #!재시작
+			#command_list += ','.join(command[10]) + '\n'     #!미예약
+			#command_list += ','.join(command[11]) + ' [인원] [금액]\n'     #!분배
+			#command_list += ','.join(command[12]) + ' [뽑을인원수] [아이디1] [아이디2]...\n'     #!사다리
+			#command_list += ','.join(command[27]) + ' [아이디1] [아이디2]...(최대 12명)\n'     #!경주
+			#command_list += ','.join(command[41]) + ' [추첨인원] (대기시간/초) *(메모)\n'    #!럭키박스
+			#command_list += ','.join(command[35]) + ' [판매금액] (거래소세금)\n'     #!수수료
+			#command_list += ','.join(command[36]) + ' [거래소금액] [실거래금액] (거래소세금)\n'     #!페이백
+			#command_list += ','.join(command[13]) + ' [아이디]\n'     #!정산
+			#command_list += ','.join(command[14]) + ' 또는 ' + ','.join(command[14]) + ' 0000, 00:00\n'     #!보스일괄
+			#command_list += ','.join(command[40]) + ' 또는 ' + ','.join(command[40]) + ' 0000, 00:00\n'     #!멍일괄
+			#command_list += ','.join(command[43]) + f' [00:00:00 : 보스명(엔터) ...]\n※ 보스탐 결과 복붙 가능\nex){command[43][0]} + 12:34:00 : {bossData[0][0]}\n+ 10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!컷등록
+			#command_list += ','.join(command[44]) + f' [00:00:00 : 보스명(엔터) ...]\n※ [00:00:00 보스명] 형태로 여러줄(엔터)로 구분하여 등록\nex){command[44][0]} + 12:34:00 : {bossData[0][0]}\n10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!예상등록
+			#command_list += ','.join(command[45]) + ' [시간(00:00)] [추가시간(숫자)] [보스명1] [보스명2] [보스명3] ...\n'     #!추가등록
+			#command_list += ','.join(command[15]) + '\n'     #!q
+			#command_list += ','.join(command[16]) + ' [할말]\n'     #!v
+			#command_list += ','.join(command[17]) + '\n'     #!리젠
+			#command_list += ','.join(command[18]) + '\n'     #!현재시간
+			#command_list += ','.join(command[24]) + '\n'     #!킬초기화
+			#command_list += ','.join(command[25]) + '\n'     #!킬횟수 확인
+			#command_list += ','.join(command[25]) + ' [아이디]\n'     #!킬
+			#command_list += ','.join(command[26]) + ' [아이디]\n'     #!킬삭제
+			#command_list += ','.join(command[33]) + ' [아이디] 또는 ' + ','.join(command[33]) + ' [아이디] [횟수]\n'     #!킬차감
+			#command_list += ','.join(command[29]) + '\n'     #!아이템 목록 초기화
+			#command_list += ','.join(command[30]) + '\n'     #!아이템 목록 확인
+			#command_list += ','.join(command[30]) + ' [아이템] 또는 ' + ','.join(command[30]) + ' [아이템] [개수]\n'     #!아이템 목록 입력
+			#command_list += ','.join(command[31]) + ' [아이템]\n'     #!아이템 목록에서 삭제
+			#command_list += ','.join(command[32]) + ' [아이템] 또는 ' + ','.join(command[32]) + ' [아이템] [개수]\n'     #!아이템 차감
+			#command_list += ','.join(command[19]) + '\n'     #!공지
+			#command_list += ','.join(command[19]) + ' [공지내용]\n'     #!공지
+			#command_list += ','.join(command[20]) + '\n'     #!공지삭제
+			#command_list += ','.join(command[21]) + ' [할말]\n'     #!상태
+			#command_list += ','.join(command[28]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널설정
+			#command_list += ','.join(command[42]) + ' 사다리, 정산, 척살, 경주, 아이템\n'     #!채널삭제
+			#command_list += ','.join(command[34]) + ' ※ 管理者のみ\n\n'     #서버나가기
 			command_list += ','.join(command[22]) + '\n'     #보스탐
 			command_list += ','.join(command[23]) + '\n'     #!보스탐
 			command_list += '[ボス名]END まだは [ボス名]エンド 0000, 00:00\n'  
@@ -1386,14 +1386,14 @@ class mainCog(commands.Cog):
 			command_list += '[ボス名]予想 まだは [ボス名] 予想 0000, 00:00\n' 
 			command_list += '[ボス名]メモ [内容]\n'
 			embed = discord.Embed(
-					title = "----- 명령어 -----",
+					title = "----- List -----",
 					description= '```' + command_list + '```',
 					color=0xff00ff
 					)
-			embed.add_field(
-					name="----- 추가기능 -----",
-					value= '```- [보스명]컷/멍/예상  [할말] : 보스시간 입력 후 빈칸 두번!! 메모 가능\n- [보스명]컷 명령어는 초성으로 입력가능합니다.\n  ex)' + bossData[0][0] + '컷 => ' +  ', ' + bossData[0][0] + ' 컷 => ' + '```'
-					)
+			#embed.add_field(
+			#		name="----- 추가기능 -----",
+			#		value= '```- [보스명]컷/멍/예상  [할말] : 보스시간 입력 후 빈칸 두번!! 메모 가능\n- [보스명]컷 명령어는 초성으로 입력가능합니다.\n  ex)' + bossData[0][0] + '컷 => ' +  ', ' + bossData[0][0] + ' 컷 => ' + '```'
+			#		)
 			await ctx.send( embed=embed, tts=False)
 		else:
 			return
