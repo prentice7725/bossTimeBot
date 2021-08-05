@@ -736,7 +736,7 @@ async def dbLoad():
 		print ("보스타임 정보가 없습니다.")
 
 #고정보스 날짜저장
-async def FixedBossDateSave():
+#async def FixedBossDateSave():
 	#global fixed_bossData
 	#global fixed_bossTime
 	#global fixed_bossNum
