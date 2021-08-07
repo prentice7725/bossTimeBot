@@ -952,7 +952,7 @@ class taskCog(commands.Cog):
 				################ 보탐봇 재시작 ################ 
 				if endTime.strftime('%Y-%m-%d ') + endTime.strftime('%H:%M:%S') == now.strftime('%Y-%m-%d ') + now.strftime('%H:%M:%S'):
 					await dbSave()
-					await FixedBossDateSave()
+					#await FixedBossDateSave()
 					await data_list_Save("kill_list.ini", "-----척살명단-----", kill_Data)
 					await data_list_Save("item_list.ini", "-----아이템목록-----", item_Data)
 					print("보탐봇재시작!")
