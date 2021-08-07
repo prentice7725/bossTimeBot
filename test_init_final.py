@@ -1057,9 +1057,9 @@ class taskCog(commands.Cog):
 							if bossFlag0[i] == False:
 								bossFlag0[i] = True
 								if bossData[i][6] != '' :
-									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[3] + '分前 ' + bossData[i][3] + " [" +  bossTimeString[i] + "]" + '\n<' + bossData[i][6] + '>```', tts=False)
+									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[3] + '分前' + bossData[i][3] + " [" +  bossTimeString[i] + "]" + '\n<' + bossData[i][6] + '>```', tts=False)
 								else :
-									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[3] + '分前 ' + bossData[i][3] + " [" +  bossTimeString[i] + "]```", tts=False)
+									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[3] + '分前' + bossData[i][3] + " [" +  bossTimeString[i] + "]```", tts=False)
 								try:
 									if basicSetting[21] == "1":
 										await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '알림1.mp3')
@@ -1072,9 +1072,9 @@ class taskCog(commands.Cog):
 							if bossFlag[i] == False:
 								bossFlag[i] = True
 								if bossData[i][6] != '' :
-									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[1] + '分前 ' + bossData[i][3] + " [" +  bossTimeString[i] + "]" + '\n<' + bossData[i][6] + '>```', tts=False)
+									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[1] + '分前' + bossData[i][3] + " [" +  bossTimeString[i] + "]" + '\n<' + bossData[i][6] + '>```', tts=False)
 								else :
-									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[1] + '分前 ' + bossData[i][3] + " [" +  bossTimeString[i] + "]```", tts=False)
+									await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' ' + basicSetting[1] + '分前' + bossData[i][3] + " [" +  bossTimeString[i] + "]```", tts=False)
 								try:
 									if basicSetting[21] == "1":
 										await PlaySound(self.bot.voice_clients[0], './sound/' + bossData[i][0] + '알림.mp3')
@@ -1147,7 +1147,7 @@ class taskCog(commands.Cog):
 										tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 										await self.bot.get_channel(channel).send("```" +  bossData[i][0] + ' 未入力です```', tts=False)
 										embed = discord.Embed(
-											description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります```',
+											description= '```' + bossData[i][0] + '次の時間は' + bossTimeString[i] + 'です。```',
 											color=0xff0000
 											)
 										await self.bot.get_channel(channel).send(embed=embed, tts=False)
@@ -1167,7 +1167,7 @@ class taskCog(commands.Cog):
 										tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 										await self.bot.get_channel(channel).send("```" + bossData[i][0] + ' わきなしです```')
 										embed = discord.Embed(
-											description= '```次は ' + bossData[i][0] + ' ' + bossTimeString[i] + 'になります。```',
+											description= '```' + bossData[i][0] + '次の時間は' + bossTimeString[i] + 'です。```',
 											color=0xff0000
 											)
 										await self.bot.get_channel(channel).send(embed=embed, tts=False)
