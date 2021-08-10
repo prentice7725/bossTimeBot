@@ -1341,7 +1341,7 @@ class mainCog(commands.Cog):
 			#command_list += ','.join(command[4]) + ' [채널명]\n'     #!채널이동
 			#command_list += ','.join(command[5]) + ' ※ 관리자만 실행 가능\n'     #!소환
 			#command_list += ','.join(command[6]) + '\n'     #!불러오기
-			#command_list += ','.join(command[7]) + '\n'     #!초기화
+			command_list += ','.join(command[7]) + '初期化します\n'     #!초기화
 			#command_list += ','.join(command[8]) + '\n'     #!명치
 			#command_list += ','.join(command[9]) + '\n'     #!재시작
 			#command_list += ','.join(command[10]) + '\n'     #!미예약
@@ -1352,7 +1352,7 @@ class mainCog(commands.Cog):
 			#command_list += ','.join(command[35]) + ' [판매금액] (거래소세금)\n'     #!수수료
 			#command_list += ','.join(command[36]) + ' [거래소금액] [실거래금액] (거래소세금)\n'     #!페이백
 			#command_list += ','.join(command[13]) + ' [아이디]\n'     #!정산
-			command_list += ','.join(command[14]) + ' 0000, 00:00 全ボスタイムをリセットします。\n'     #!보스일괄
+			command_list += ','.join(command[14]) + ' 0000, 00:00 全ボスタイムを一括セットします。\n'     #!보스일괄
 			#command_list += ','.join(command[40]) + ' 또는 ' + ','.join(command[40]) + ' 0000, 00:00\n'     #!멍일괄
 			#command_list += ','.join(command[43]) + f' [00:00:00 : 보스명(엔터) ...]\n※ 보스탐 결과 복붙 가능\nex){command[43][0]} + 12:34:00 : {bossData[0][0]}\n+ 10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!컷등록
 			#command_list += ','.join(command[44]) + f' [00:00:00 : 보스명(엔터) ...]\n※ [00:00:00 보스명] 형태로 여러줄(엔터)로 구분하여 등록\nex){command[44][0]} + 12:34:00 : {bossData[0][0]}\n10:56:00 : {bossData[1][0]}\n+ (+1d) 12:12:00 : {bossData[2][0]}...\n'     #!예상등록
@@ -1687,7 +1687,7 @@ class mainCog(commands.Cog):
 
 			await dbSave()
 
-			await ctx.send('< 초기화 완료 >', tts=False)
+			await ctx.send('<初期化完了しました>', tts=False)
 			print ("< 초기화 완료 >")
 		else:
 			return
@@ -2012,7 +2012,7 @@ class mainCog(commands.Cog):
 			await dbLoad()
 			await dbSave()
 			
-			await ctx.send('<보스 일괄 입력 완료>', tts=False)
+			await ctx.send('<ボスタイム一括入力完了>', tts=False)
 			print ("<보스 일괄 입력 완료>")
 		else:
 			return
