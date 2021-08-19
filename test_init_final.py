@@ -3977,7 +3977,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 				channel = basicSetting[7]
 				message = msg
 
-				for command_str in ["END", "SKIP", "えんど", "エンド", "わきなし", "無し", "予想","削除", "メモ"]:
+				for command_str in ["END", "end", "SKIP", "えんど", "エンド", "わきなし", "無し", "予想","削除", "メモ", "컷"]:
 					if command_str in message.content:
 						tmp_msg : str = ""
 						for key, value in boss_nick.items():
@@ -3988,7 +3988,7 @@ class IlsangDistributionBot(commands.AutoShardedBot):
 
 				for i in range(bossNum):
 					################ 보스 컷처리 ################ 
-					if message.content.upper().startswith(bossData[i][0] +'END') or message.content.upper().startswith(bossData[i][0] +' END') or message.content.startswith(bossData[i][0] +'えんど') or message.content.startswith(bossData[i][0] +' えんど') or message.content.startswith(bossData[i][0] +'エンド') or message.content.startswith(bossData[i][0] +' エンド'):
+					if message.content.upper().startswith(bossData[i][0] +'END') or message.content.upper().startswith(bossData[i][0] +' END') or message.content.startswith(bossData[i][0] +'えんど') or message.content.startswith(bossData[i][0] +' えんど') or message.content.startswith(bossData[i][0] +'エンド') or message.content.startswith(bossData[i][0] +' エンド' or message.content.startswith(bossData[i][0] +'컷'):
 						if hello.find('  ') != -1 :
 							bossData[i][6] = hello[hello.find('  ')+2:]
 							hello = hello[:hello.find('  ')]
